@@ -16,7 +16,7 @@ class Status
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?Status $label = null;
+    private ?string $label = null;
 
     /**
      * @var Collection<int, Task>
@@ -34,12 +34,12 @@ class Status
         return $this->id;
     }
 
-    public function getLabel(): ?Status
+    public function getLabel(): ?string
     {
         return $this->label;
     }
 
-    public function setLabel(Status $label): static
+    public function setLabel(string $label): static
     {
         $this->label = $label;
 

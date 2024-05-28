@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EmployeeRepository::class)]
 class Employee
@@ -41,12 +42,13 @@ class Employee
         type: Types::DATE_MUTABLE,
         name: "arrival_date"
         )]
+    #[Assert\DateTime]
     private ?\DateTimeInterface $arrivalDate = null;
 
-    #[ORM\Column(options: ["default" => false])]
+    #[ORM\Column(options: ["default" => true])]
     private ?bool $active = null;
 
-    #[ORM\Column(options: ["default" => true])]
+    #[ORM\Column(options: ["default" => false])]
     private ?bool $job = null;
 
     /**
