@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition d'un projet - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <main>
+    <header>
+        <div id="current-user"></div>
+        <div id="title-page">
+            <h1>{{ project.name }}</h1>
+        </div>
+    </header>
+    <div id="content">
+        {{ form_start(form) }}
+            <div>{{ form_row(form.name) }}</div>
+            <div>{{ form_row(form.employees) }}</div>
+            <br>
+            <div>{{ form_row(form.archive) }}</div>
+            <br>
+            <button class="button button-submit">Modifier</button>
+        {{ form_end(form) }}
+    </div>
+    </main>
+{% endblock %}
+

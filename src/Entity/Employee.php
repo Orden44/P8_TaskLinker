@@ -1,5 +1,5 @@
 <?php
-
+// src/Entity/Employee.php
 namespace App\Entity;
 
 use App\Repository\EmployeeRepository;
@@ -216,5 +216,15 @@ class Employee
         $this->task->removeElement($task);
 
         return $this;
+    }
+
+    public function getFullName(): string
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return substr($this->getFirstName(), 0, 1) . " " . substr($this->getLastName(), 0, 1);
     }
 }

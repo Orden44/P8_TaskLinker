@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Error page - {{ parent() }}{% endblock %}
+{% block body %}
+    <div id="error">
+        <h1>Erreur</h1>
+        <p>{{ error }}</p>
+        <a href="{{ path('app_home' )}}">Retour à la page d'accueil</a>
+    </div>
+{% endblock %}

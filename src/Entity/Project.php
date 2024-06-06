@@ -1,5 +1,5 @@
 <?php
-
+// src/Entity/Project.php
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
@@ -26,7 +26,7 @@ class Project
     private ?\DateTimeInterface $deadline = null;
 
     #[ORM\Column(options: ["default" => false])]
-    private ?bool $archive = null;
+    private ?bool $archive = false;
 
     /**
      * @var Collection<int, Task>
