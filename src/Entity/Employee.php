@@ -42,7 +42,6 @@ class Employee
         type: Types::DATE_MUTABLE,
         name: "arrival_date"
         )]
-    #[Assert\DateTime]
     private ?\DateTimeInterface $arrivalDate = null;
 
     #[ORM\Column(options: ["default" => true])]
