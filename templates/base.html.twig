@@ -18,23 +18,6 @@
    </head>
    <body>
    <div id="main-container">
-        <nav>
-            <a href="{{ path('app_home') }}" id="logo">
-            <img src="{{ asset('assets/img/logo.png') }}" alt="Logo TaskLinker" />
-            </a>
-            <ul id="main-menu">
-            <li class="active">
-                <a href="{{ path('app_home') }}">
-                <i class="fa-solid fa-list-check"></i> Projets
-                </a>
-            </li>
-            <li>
-                <a href="{{ path('app_employees') }}">
-                <i class="fa-regular fa-user"></i> Équipe
-                </a>
-            </li>
-            </ul>
-        </nav>
         {% block body %}{% endblock %}
     </div>
     </body>

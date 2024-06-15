@@ -3,6 +3,7 @@
 {% block title %}{{ employee.fullname }} - {{ parent() }}{% endblock %}
 
 {% block body %}
+    {% include 'header.html.twig' with {'active': 'team'} %}
     <main>
         <header>
             <div id="current-user"></div>

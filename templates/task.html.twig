@@ -3,6 +3,7 @@
 {% block title %}{{ task.title }} - {{ parent() }}{% endblock %}
 
 {% block body %}
+    {% include 'header.html.twig' with {'active': 'project'} %}
     <main>
         <header>
             <div id="current-user"></div>

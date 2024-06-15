@@ -3,6 +3,7 @@
 {% block title %}{{ project.name }} - {{ parent() }}{% endblock %}
 
 {% block body %}
+    {% include 'header.html.twig' with {'active': 'project'} %}
     <main>
         <header>
             <div id="current-user"></div>
@@ -37,22 +38,17 @@
                                                 </div>
                                             {% endif %}
                                             {% if task.employees %}
-
-                                                {# {% for employee in employees %}
-                                                    <div class="mini-user">
-                                                        {{ task.employee.getAvatar }}
-                                                    </div>
-                                                {% endfor %} #}
-
-                                                <div class="mini-user">
-                                                    {# {{ task.employees.getAvatar }} #}
-                                                </div>
+                                                    {% for employee in task.employees %}
+                                                        <div class="mini-user">
+                                                            {{ employee.getAvatar }}
+                                                        </div>
+                                                    {% endfor %}
                                             {% endif %}
                                         </div>
                                     </a>
                                 {% endif %}
                             {% endfor %}
-                            <a href="{{ path("app_task_add", {id: project.id}) }}" class="task-add">
+                            <a href="{{ path("app_task_add", {id: project.id, status: status.id}) }}" class="task-add">
                                 + Ajouter une tâche
                             </a>
                         </div>
