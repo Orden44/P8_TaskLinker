@@ -35,6 +35,7 @@ class TaskType extends AbstractType
                 'choice_label' => 'fullName',
                 'choice_value' => 'id',
                 'multiple' => true,
+                'by_reference' => false,                
             ])
             ->add('project', EntityType::class, [
                 'label' => 'Projet',

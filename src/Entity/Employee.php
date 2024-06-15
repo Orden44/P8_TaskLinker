@@ -29,7 +29,8 @@ class Employee
         )]
     private ?string $lastName = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
+    #[Assert\Email()]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
@@ -224,6 +225,6 @@ class Employee
 
     public function getAvatar(): ?string
     {
-        return substr($this->getFirstName(), 0, 1) . " " . substr($this->getLastName(), 0, 1);
+        return substr($this->getFirstName(), 0, 1) . "" . substr($this->getLastName(), 0, 1);
     }
 }

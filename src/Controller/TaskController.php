@@ -2,10 +2,13 @@
 // src/Controller/TaskController.php
 namespace App\Controller;
 
+use App\Entity\Status;
 use App\Entity\Task;
 use App\Form\TaskType;
 use App\Repository\TaskRepository;
 use App\Repository\EmployeeRepository;
+use App\Repository\ProjectRepository;
+use App\Repository\StatusRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,15 +20,23 @@ class TaskController extends AbstractController
     public function __construct(
         private TaskRepository $taskRepository,
         private EmployeeRepository $employeeRepository,
+        private ProjectRepository $projectRepository,
         private EntityManagerInterface $entityManager,
+        private StatusRepository $statusRepository,
     )
     {
     }
-
-    #[Route('/task/add', name: 'app_task_add')]
-    public function editTask(Request $request, EntityManagerInterface $entityManager): Response
+    
+    #[Route('/task{id}/add/{status}', name: 'app_task_add')]
+    public function createTask(Request $request, EntityManagerInterface $entityManager, int $id, int $status): Response
     {
+        $project = $this->projectRepository->find($id);
+        $current_status = $this->statusRepository->find($status);
+        $employees = $this->employeeRepository->findAll();
+        $employees = $project->getEmployees();
         $task = new Task();
+        $task->setProject($project);
+        $task->setStatus($current_status);
 
         $form = $this->createform(TaskType::class, $task);
 
@@ -40,7 +51,9 @@ class TaskController extends AbstractController
         }
 
         return $this->render('/new-task.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
+            'employees' => $employees,
+            'task' => $task,
         ]);
     }
 
@@ -66,7 +79,7 @@ class TaskController extends AbstractController
         }
 
         return $this->render('/task.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
             'task' => $task,
         ]);
     }

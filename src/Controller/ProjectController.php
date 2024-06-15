@@ -88,7 +88,6 @@ class ProjectController extends AbstractController
         if(!$project) {
             return $this->redirectToRoute('app_error');
         }
-
         return $this->render('/project.html.twig', [
             'project' => $project,
             'tasks' => $tasks,

@@ -18,7 +18,6 @@ class EmployeeType extends AbstractType
             ->add('lastName', TextType::class, ['label' => 'Nom'])
             ->add('firstName', TextType::class, ['label' => 'Prénom'])
             ->add('email', EmailType::class, ['label' => 'Email'])
-            // ->add('password')
             ->add('arrivalDate', DateType::class, [
                 'label' => 'Date d\'entrée',
                 'widget' => 'single_text',

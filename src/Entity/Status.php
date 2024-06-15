@@ -21,7 +21,7 @@ class Status
     /**
      * @var Collection<int, Task>
      */
-    #[ORM\OneToMany(targetEntity: Task::class, mappedBy: 'status', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Task::class, mappedBy: 'status', orphanRemoval: true, fetch: "EAGER")]
     private Collection $tasks;
 
     public function __construct()
