@@ -1,5 +1,5 @@
 <?php
-// src/Controller/Home.php
+// src/Controller/HomeController.php
 namespace App\Controller;
 
 use App\Repository\ProjectRepository;
